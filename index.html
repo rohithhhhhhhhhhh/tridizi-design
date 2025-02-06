@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .product-page {
+            padding: 20px;
+        }
+
+        .breadcrumb {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .product-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .image-gallery {
+            flex: 1;
+        }
+
+        .image-gallery .main-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumbnail-gallery img {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-details h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .price .current-price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .price .original-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .price .discount {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        .description {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .options {
+            margin-bottom: 20px;
+        }
+
+        .colors, .sizes {
+            margin-bottom: 10px;
+        }
+
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .size-option {
+            padding: 5px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .size-option.active {
+            background-color: #333;
+            color: white;
+            border-color: #333;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .quantity button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .quantity .quantity-value {
+            margin: 0 10px;
+            font-size: 1.2em;
+        }
+
+        .add-to-cart {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const thumbnails = document.querySelectorAll(".thumbnail-gallery img");
+            const mainImage = document.querySelector(".main-image");
+            const quantityValue = document.querySelector(".quantity-value");
+            const decrementButton = document.querySelector(".decrement");
+            const incrementButton = document.querySelector(".increment");
+
+            // Thumbnail click event
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener("click", () => {
+                    mainImage.src = thumbnail.src;
+                });
+            });
+
+            // Quantity increment/decrement
+            decrementButton.addEventListener("click", () => {
+                let value = parseInt(quantityValue.textContent);
+                if (value > 1) {
+                    quantityValue.textContent = value - 1;
+                }
+            });
+
+            incrementButton.addEventListener("click", () => {
+                let value = parseInt(quantityValue.textContent);
+                quantityValue.textContent = value + 1;
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">SHOP.CO</div>
+        <nav>
+            <ul>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">On Sale</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Brands</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon">🛒</div>
+    </header>
+
+    <main class="product-page">
+        <div class="breadcrumb">Home > Shop > Men > T-shirts</div>
+        <div class="product-container">
+            <div class="image-gallery">
+                <img src="./image_168.jpg" alt="T-shirt image" class="main-image">
+                <div class="thumbnail-gallery">
+                    <img src="./image_169.jpg" alt="T-shirt thumbnail">
+                    <img src="./image_170.jpg" alt="T-shirt thumbnail">
+                    <img src="./image_171.jpg" alt="T-shirt thumbnail">
+                </div>
+            </div>
+
+            <div class="product-details">
+                <h1>ONE LIFE GRAPHIC T-SHIRT</h1>
+                <div class="rating">⭐ 4.5/5</div>
+                <div class="price">
+                    <span class="current-price">$260</span>
+                    <span class="original-price">$300</span>
+                    <span class="discount">-40%</span>
+                </div>
+                <p class="description">This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.</p>
+
+                <div class="options">
+                    <div class="colors">
+                        <label>Select Colors:</label>
+                        <button class="color-option" style="background-color: #5A5A3E;"></button>
+                        <button class="color-option" style="background-color: #2F4F4F;"></button>
+                        <button class="color-option" style="background-color: #2C2F55;"></button>
+                    </div>
+
+                    <div class="sizes">
+                        <label>Choose Size:</label>
+                        <button class="size-option">Small</button>
+                        <button class="size-option">Medium</button>
+                        <button class="size-option active">Large</button>
+                        <button class="size-option">X-Large</button>
+                    </div>
+                </div>
+
+                <div class="quantity">
+                    <button class="decrement">-</button>
+                    <span class="quantity-value">1</span>
+                    <button class="increment">+</button>
+                </div>
+
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SHOP.CO. All rights reserved.</p>
+    </footer>
+</body>
+</html>
